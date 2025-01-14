@@ -3,7 +3,7 @@ FROM maven:3.8.6-openjdk-11
 WORKDIR /var/www/html
 
 RUN addgroup --gid=1000 app
-RUN adduser --disabled-password --quiet --uid=1000 --gid=1000 --no-create-home --gecos GECOS app
+RUN adduser --disabled-password --quiet --uid=1000 --gid=1000 --no-create-home --home=/var/www/html  --gecos GECOS app
 
 #EXPOSE 9000
 
