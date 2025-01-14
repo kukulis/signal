@@ -1,3 +1,12 @@
+# we will start new readme here
+
+## rebuild container
+
+docker build -t sauliai/signal-server .docker/signal-server/local
+
+
+# OLD documentation:
+
 Signal-Server
 =================
 

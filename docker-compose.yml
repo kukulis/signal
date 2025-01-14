@@ -1,0 +1,31 @@
+version: "3.6"
+
+networks:
+    sauliai-network:
+        name: sauliai-network
+
+services:
+    signal-server:
+        image: sauliai/signal-server:latest
+        container_name: signal-server
+        build:
+            context: ./
+            dockerfile: .docker/signal-server/local/Dockerfile
+        restart: unless-stopped
+        volumes:
+            - ./:/var/www/html
+            - ./.m2/:/root/.m2
+        environment:
+            BASEDIR: /var/www/html
+            HOME: /var/www/html
+        #    MAVEN_CONFIG: /var/www/html/.m2
+        #      SYSTEM_UID: '${SYSTEM_UID}'
+        #      SYSTEM_GID: '${SYSTEM_GID}'
+        # user: ${CURRENT_UID}
+#        ports:
+#             - "8082:9000"
+            
+        networks:
+            - sauliai-network
+            
+
