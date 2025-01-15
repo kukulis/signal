@@ -10,3 +10,5 @@ config/federated.yml
 config/staging.yml
 .opsmanage
 put.sh
+.bash_history
+git_log.txt

@@ -5,6 +5,14 @@
 docker build -t sauliai/signal-server .docker/signal-server/local
 
 
+## connecting with psql client
+
+    psql -h 172.22.0.2 -U postgres
+
+where 172.22.0.2 is the ip address of signal-server-188-db-1 which you can check using:
+
+    docker inspect signal-server-188-db-1
+
 # OLD documentation:
 
 Signal-Server

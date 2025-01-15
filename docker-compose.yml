@@ -1,4 +1,4 @@
-version: "3.6"
+# version: "3.8"
 
 networks:
     sauliai-network:
@@ -27,5 +27,40 @@ services:
             
         networks:
             - sauliai-network
-            
+
+        depends_on:
+            - db
+            - cache
+
+    db:
+        image: postgres:14.1-alpine
+        restart: always
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        ports:
+            - '5432:5432'
+        volumes:
+            - db:/var/lib/postgresql/data
+#            - ./db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+        networks:
+            - sauliai-network
+    cache:
+        image: redis:7.4.2
+#        container_name: cache
+        restart: always
+        ports:
+            - '6379:6379'
+        command: redis-server --save 20 1 --loglevel warning --requirepass Labas123
+        volumes:
+            - cache:/data
+        networks:
+            - sauliai-network
+volumes:
+    cache:
+        driver: local
+
+    db:
+        driver: local
+
 
