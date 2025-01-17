@@ -6,7 +6,6 @@ import com.codahale.metrics.Timer;
 import com.google.protobuf.ByteString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.whispersystems.textsecuregcm.push.ApnFallbackManager;
 import org.whispersystems.textsecuregcm.push.PushSender;
 import org.whispersystems.textsecuregcm.push.ReceiptSender;
 import org.whispersystems.textsecuregcm.redis.RedisOperation;
@@ -33,19 +32,16 @@ public class AuthenticatedConnectListener implements WebSocketConnectListener {
   private final ReceiptSender      receiptSender;
   private final MessagesManager    messagesManager;
   private final PubSubManager      pubSubManager;
-  private final ApnFallbackManager apnFallbackManager;
 
   public AuthenticatedConnectListener(PushSender pushSender,
                                       ReceiptSender receiptSender,
                                       MessagesManager messagesManager,
-                                      PubSubManager pubSubManager,
-                                      ApnFallbackManager apnFallbackManager)
+                                      PubSubManager pubSubManager)
   {
     this.pushSender         = pushSender;
     this.receiptSender      = receiptSender;
     this.messagesManager    = messagesManager;
     this.pubSubManager      = pubSubManager;
-    this.apnFallbackManager = apnFallbackManager;
   }
 
   @Override
@@ -62,7 +58,6 @@ public class AuthenticatedConnectListener implements WebSocketConnectListener {
                                                                 .setContent(ByteString.copyFrom(connectionId.getBytes()))
                                                                 .build();
 
-    RedisOperation.unchecked(() -> apnFallbackManager.cancel(account, device));
     pubSubManager.publish(address, connectMessage);
     pubSubManager.subscribe(address, connection);
 

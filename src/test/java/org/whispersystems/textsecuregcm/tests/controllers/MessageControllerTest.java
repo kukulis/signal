@@ -18,7 +18,6 @@ import org.whispersystems.textsecuregcm.entities.StaleDevices;
 import org.whispersystems.textsecuregcm.federation.FederatedClientManager;
 import org.whispersystems.textsecuregcm.limits.RateLimiter;
 import org.whispersystems.textsecuregcm.limits.RateLimiters;
-import org.whispersystems.textsecuregcm.push.ApnFallbackManager;
 import org.whispersystems.textsecuregcm.push.PushSender;
 import org.whispersystems.textsecuregcm.push.ReceiptSender;
 import org.whispersystems.textsecuregcm.storage.Account;
@@ -59,7 +58,6 @@ public class MessageControllerTest {
   private  final MessagesManager        messagesManager        = mock(MessagesManager.class);
   private  final RateLimiters           rateLimiters           = mock(RateLimiters.class          );
   private  final RateLimiter            rateLimiter            = mock(RateLimiter.class           );
-  private  final ApnFallbackManager     apnFallbackManager     = mock(ApnFallbackManager.class);
 
   private  final ObjectMapper mapper = new ObjectMapper();
 
@@ -69,7 +67,7 @@ public class MessageControllerTest {
                                                             .addProvider(new AuthValueFactoryProvider.Binder())
                                                             .setTestContainerFactory(new GrizzlyWebTestContainerFactory())
                                                             .addResource(new MessageController(rateLimiters, pushSender, receiptSender, accountsManager,
-                                                                                               messagesManager, federatedClientManager, apnFallbackManager))
+                                                                                               messagesManager, federatedClientManager))
                                                             .build();
 
 
@@ -93,7 +91,7 @@ public class MessageControllerTest {
 
     when(rateLimiters.getMessagesLimiter()).thenReturn(rateLimiter);
   }
-  
+
   @Test
   public synchronized void testSingleDeviceCurrent() throws Exception {
     Response response =
