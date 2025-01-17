@@ -30,7 +30,7 @@ services:
             - sauliai-network
 
         depends_on:
-            - signal-db
+#            - signal-db
             - cache
 
     signal-db:
@@ -42,9 +42,10 @@ services:
             - POSTGRES_PASSWORD=postgres
         ports:
             - '5432:5432'
-#        volumes:
-#            - ./db:/var/lib/postgresql/data
-#            - ./db-shared:/db-shared
+        volumes:
+            - ./db/:/var/lib/postgresql/data/
+#            - ./db/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf
+            - ./db-shared:/db-shared
 #            - ./db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
         networks:
             - sauliai-network

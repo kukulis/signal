@@ -22,6 +22,10 @@ config_file
 /var/lib/postgresql/data/postgresql.conf
 (1 row)
 
+The /var/lib/postgresql/data is mapped to ./db through docker-compose.yml. 
+The postgresql service automatically modifies /var/lib/postgresql/data dir to be visible and accessible to the root use only.
+
+To modify configuration files you have to use root account (through sudo for example).
 
 
 
