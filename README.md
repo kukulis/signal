@@ -29,6 +29,47 @@ To modify configuration files you have to use root account (through sudo for exa
 
 
 
+Change password_encryption to md5 in postgresql.conf
+
+Windows: C:\Program Files\PostgreSQL\13\data\postgresql.conf
+GNU/Linux:           /etc/postgresql/13/main/postgresql.conf
+
+password_encryption=md5
+
+enter image description here
+
+Change scram-sha-256 to md5 in pg_hba.conf
+
+Windows: C:\Program Files\PostgreSQL\13\data\pg_hba.conf
+GNU/Linux:           /etc/postgresql/13/main/pg_hba.conf
+
+host    all             all             0.0.0.0/0               md5
+
+## db install sequence
+
+PostgreSQL Configuration
+------------
+1. `$ sudo -iu postgres`
+2. `[postgres]$ initdb -D /var/lib/postgres/data`
+3. `[postgres]$ createdb -U postgres accountsdb`
+3. `[postgres]$ createdb -U postgres messagedb`
+5.
+```
+[postgres]$ createuser --interactive
+    Enter name of role to add: signal
+    Shall the new role be a superuser? (y/n) y
+```
+6. `[postgres]$ psql`
+7. `[postgres]# ALTER USER signal WITH PASSWORD 'YourPassword';`
+8. `[postgres]# exit`
+9. `[postgres]$ exit`
+10. `$ systemctl start postgresql.service`
+11. `$ systemctl enable postgresql.service`
+
+
+
+
+
 # OLD documentation:
 
 Signal-Server
