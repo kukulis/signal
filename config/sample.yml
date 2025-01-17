@@ -13,8 +13,8 @@ twilio: # Twilio gateway configuration
 push:
   queueSize: # Size of push pending queue
 
-redphone:
-  authKey: # Deprecated
+#redphone:
+#  authKey: # Deprecated
 
 turn: # TURN server configuration
   secret: # TURN server secret
@@ -25,22 +25,22 @@ turn: # TURN server configuration
     - turn:etc.com:80?transport=udp
 
 cache: # Redis server configuration for cache cluster
-  url:
-  replicaUrls:
+  url: cache
+  replicaUrls:  ["redis://cache:6379/4"]
 
 directory: # Redis server configuration for directory cluster
-  url:
-  replicaUrls:
+  url: cache
+  replicaUrls: ["redis://cache:6379/5"]
 
 messageCache: # Redis server configuration for message store cache
-  url:
-  replicaUrls:
+  url: cache
+  replicaUrls: ["redis://cache:6379/6"]
 
 messageStore: # Postgresql database configuration for message store
   driverClass: org.postgresql.Driver
-  user:
-  password:
-  url:
+  user: postgres
+  password: postgres
+  url: jdbc:postgresql://db:5432/example2
 
 attachments: # AWS S3 configuration
   accessKey:
@@ -55,9 +55,9 @@ profiles: # AWS S3 configuration
 
 database: # Postgresql database configuration
   driverClass: org.postgresql.Driver
-  user:
-  password:
-  url:
+  user: postgres
+  password: postgres
+  url: jdbc:postgresql://db:5432/example2
 
 apn: # Apple Push Notifications configuration
   bundleId:
