@@ -55,8 +55,36 @@ database: # Postgresql database configuration
 
 apn: # Apple Push Notifications configuration
   bundleId: localhost
-  pushCertificate: config/certs/Certificate.p12
-  pushKey: 12345 # fake
+  pushCertificate: certs/client-identity.p12
+  pushKey: |
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEpAIBAAKCAQEA9cwzKjZZwMKk+HbmeH5AczihxCXcwXt77bbVHllNRtKz9wUg
+    w7V/sm4q9zXuxMbMIlyzmVT1mfHwZlCNv2CUrTNPy6EBNUWiM4jEHmU1LFgk7/Nh
+    zNPlCvSmU1o7i9kDiUZvxejE57bc0droeQE8g5vPrzuG0OopiEka12A38TFQonGj
+    sk8nuXQRz03GLzsR9TpO/esKi0E7Y2iRRF6I29pdBIJ3bjjbGNKRFCCzP0eG6dYd
+    48BVyO3FyNCPSUrYxBsad9q9YPZgIIFnuY//P0oRtueqCYFhGOEc7sdDJuoWmHGX
+    xuv3h0P1JpidNc+PC57i2yjZdFa0C9Yoec8sUwIDAQABAoIBAAlqyS9981140IU+
+    PIFeMybTZqEBcXcZISoo0YkJr7zsBFpw5zA76X2r6m1/ll713fzCJyPTpwYiOi00
+    5cQNSwFlGv1RkZ6AqLJ1pdpcRPe0235RiXpeZNE0oz8nnvjc5hZzqYNK8jBUuW/H
+    E/l+3C/Ibf6SttRABHNWtFodbA5g26S7qaduoOElwd81mOMlR2zsscns68qER2H7
+    WSXKXy6s2YhOFKltMpFiz/GNSgExgaPpkTnSxFa8BCq2/HD/zyj5we8LMLZpoZTu
+    lv0/TsrppNjCHz+B4DgIoX6GRApKGt87TtmL2UlSTVyCuPxMDlEL/urJt3CAfpig
+    Rb5syeECgYEA/fAlTTXXhVzMZRPpLiYHnPNgZFQ21C8im1hqNDmODU7OqHbG3s8j
+    CeKMDvUOp5lpxeuWFT61BOd06lUjYsHpOxEBxgDsXkjiZM1zOjtvLHAwI8+LL3HG
+    jpnzx/Qxtl6RKIc+qRzwHfcxGRfgK3xczAOIWD+CVMaPK8hERJbnzokCgYEA98si
+    BUke5prIfcGh5L6NZFVrkqsashQQSyqX6D5FlmIbkQu+lDVQi16N9+wxhArroCHJ
+    905tfoo0+dnPMzECqt+1GAZkpHy66wtxMj6dBj2CT7fAQlQBz72q/tU5jP907b/p
+    EAS4p8HHi+e9+oNlZlINtXxL9U53/D5WlQO/TPsCgYEA1hYkHJgL/29hEsZajIGb
+    YYL9/RfSscibUISV5TmwvR93syeQOkA/thG9Ks8Hb90zA52+hmK7kkrgkr78ekIp
+    M5b++8PDgynHVFyxjKKW88wRid9r5K/zSj4Y/LavQqUvlA+RkFnJRjoktpcecwsB
+    4S4JQP0qD/bmtW69v2XKQKECgYEA6pzvGjgQROE6gS8rvKvaravfDWBqBz/N6Y1r
+    hN4o/ujnFt8a07LjDwI4wwtkGpRIYjZ7xmcAbvYmkIX0k5CM6QKksRmkgsUCKXeM
+    9rin7fehAR+GroZhrLL1SxDRy7k3mb/ByIPf3h4wdDu3+ZAdGtMH3dTRCnMAUdko
+    GzEQGK8CgYBV+IJqbSjD7roPJfaCP6w/XKIj0sl3ogmsAtb9ZbFMRwcZwOMTlNvR
+    aZyqo7MMJrnJlI3e8lGpjceTzIVVK5uNszljd5DCJjbmd36laL+EKZixB5Dto4Mc
+    Qylcn8Kd8OK47QHT0sHjnr//IMaYzOZx/6/pDapwS/khnTX+qhssXg==
+    -----END RSA PRIVATE KEY-----
+   
 
 gcm: # GCM Configuration
   senderId: 987654321987 # fake

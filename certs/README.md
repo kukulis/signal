@@ -14,3 +14,8 @@ Create SSL identity file in PKCS12 as mentioned here
 
     openssl pkcs12 -export -out client-identity.p12 -inkey key.pem -in certificate.pem
 
+
+
+Exporting key pair as an RSA keys.
+
+    openssl pkcs12 -in certs/client-identity.p12 -nodes -nocerts | openssl rsa -out certs/OUTFILE.key
