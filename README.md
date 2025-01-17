@@ -13,6 +13,18 @@ where 172.22.0.2 is the ip address of signal-server-188-db-1 which you can check
 
     docker inspect signal-server-188-db-1
 
+
+# postgres stuff
+
+bash-5.1# psql -U postgres -c 'SHOW config_file';
+config_file
+------------------------------------------
+/var/lib/postgresql/data/postgresql.conf
+(1 row)
+
+
+
+
 # OLD documentation:
 
 Signal-Server
