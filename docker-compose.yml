@@ -22,9 +22,10 @@ services:
         #      SYSTEM_UID: '${SYSTEM_UID}'
         #      SYSTEM_GID: '${SYSTEM_GID}'
         # user: ${CURRENT_UID}
-#        ports:
-#             - "8082:9000"
-            
+        ports:
+             - "8080:8080"
+             - "8081:8081"
+
         networks:
             - sauliai-network
 

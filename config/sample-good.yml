@@ -1,0 +1,71 @@
+twilio: # Twilio gateway configuration
+  accountId: AZ8acwec7fc5eaf209a69f05e50a8b2675 #fake
+  accountToken: 556658d1458f8852ed183a64c40ec5d1 #fake
+  numbers: # Numbers allocated in Twilio
+    - +33756796138 #fake
+  messagingServicesId:
+  localDomain: localhost # Domain Twilio can connect back to for calls. Should be domain of your service.
+
+push:
+  queueSize: # Size of push pending queue
+
+turn: # TURN server configuration
+  secret: test # TURN server secret
+  uris: ["turn:127.0.0.1:3478"]
+
+cache: # Redis server configuration for cache cluster
+  url: "redis://cache:6379"
+  replicaUrls: ["redis://cache:6379"]
+
+directory: # Redis server configuration for directory cluster
+  url: "redis://cache:6379"
+  replicaUrls: ["redis://cache:6379"]
+
+messageCache: # Redis server configuration for message store cache
+  redis:
+    url: "redis://cache:6379"
+    replicaUrls: ["redis://cache:6379"]
+
+pushScheduler:
+  url: "redis://cache:6379"
+  replicaUrls: ["redis://cache:6379"]
+
+messageStore: # Postgresql database configuration for message store
+  driverClass: org.postgresql.Driver
+  user: "signal"
+  password: "Labas123"
+  url: "jdbc:postgresql://db:5432/messagedb"
+
+attachments: # AWS S3 configuration
+  accessKey: ABCDEFGCUFYDHVM2LXX #fake
+  accessSecret: W0UfGDddfAbqYyCTIIbSQlDtreTGokOs0OTpL0SE #fake
+  bucket: your.bucket.name.attachments
+
+profiles: # AWS S3 configuration
+  accessKey: ABCDEFGCUFYDHVM2LXX #fake
+  accessSecret: W0UfGDddfAbqYyCTIIbSQlDtreTGokOs0OTpL0SE #fake
+  bucket: your.bucket.name.profiles # make sure it is different from attachments
+  region: us-east-1
+
+database: # Postgresql database configuration
+  driverClass: org.postgresql.Driver
+  user: "signal"
+  password: "Labas123"
+  url: "jdbc:postgresql://db:5432/accountsdb"
+
+apn: # Apple Push Notifications configuration
+  bundleId: localhost
+  pushCertificate: config/certs/Certificate.p12
+  pushKey: 12345 # fake
+
+gcm: # GCM Configuration
+  senderId: 987654321987 # fake
+  apiKey: A945jasdfISDjfskdad9JDadkafkgdikfdiSkds # fake
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
